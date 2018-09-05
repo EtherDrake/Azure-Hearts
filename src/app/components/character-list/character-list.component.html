@@ -1,0 +1,27 @@
+<div class="chars">
+
+  <!--
+  <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+  </mat-form-field>-->
+
+  <mat-table class="members-table" [dataSource]="dataSource" matSort>    
+
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> <b>Name</b> </mat-header-cell>
+      <mat-cell *matCellDef="let row"><a href={{row.link}}> {{row.name}} </a> </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Player">
+      <mat-header-cell *matHeaderCellDef> <b>Player</b> </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.player}} </mat-cell>
+    </ng-container>    
+
+    <mat-header-row *matHeaderRowDef="['Name', 'Player']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['Name', 'Player']" (click)="onRowClicked(row)"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [length]="5" [pageSize]="10"></mat-paginator>
+
+</div>
